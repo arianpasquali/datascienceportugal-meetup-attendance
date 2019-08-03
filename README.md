@@ -9,7 +9,7 @@ Utilities to handle meetup attendance
 
 ## Installation
 
-We recommend install your requiriments using virtualenv or anaconda. In order to install all python requirements:
+We recommend install your requirements using virtualenv or anaconda. In order to install all python requirements:
 
 ```sh
 pip install -r requirements.txt
