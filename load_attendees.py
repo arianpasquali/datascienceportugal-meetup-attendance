@@ -74,11 +74,11 @@ def fetch_data(event_url):
 
                 attendees.append(item)
 
-        click.echo("Exporting results into csv file")
+        outputfile_name = "{}_attendees.csv".format(event_id)
+        click.echo("Exporting results into csv file " + outputfile_name)
         
         df = pd.DataFrame(attendees)
-        # df["profile_id"] = df["url"].apply(lambda x : re.search(r'members/(.*?)/profile', x).group(1))    
-        df.to_csv("{}_attendees.csv".format(event_id))
+        df.to_csv(outputfile_name)
 
         click.echo("Success!")
         
