@@ -75,7 +75,7 @@ def fetch_data(event_url):
                 attendees.append(item)
 
         outputfile_name = "{}_attendees.csv".format(event_id)
-        click.echo("Exporting results into csv file " + outputfile_name)
+        click.echo("Exporting results to " + outputfile_name)
         
         df = pd.DataFrame(attendees)
         df.to_csv(outputfile_name)
