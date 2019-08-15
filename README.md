@@ -15,8 +15,6 @@ We recommend install your requirements using virtualenv or anaconda. In order to
 pip install -r requirements.txt
 ```
 
-
-
 ## Load event attendance
 
 In order to load event attendees:
@@ -29,14 +27,19 @@ Options:
   -e, --event_url TEXT
 ```
 
-Exemple loading attendees from event https://www.meetup.com/datascienceportugal/events/249301603 :
+Example loading attendees from event https://www.meetup.com/datascienceportugal/events/249301603 :
 
 ```sh
 python load_attendees.py --event_url https://www.meetup.com/datascienceportugal/events/249301603
+
+Loading attendees from Meetup Event
+Fetching data from url https://www.meetup.com/datascienceportugal/events/249301603/attendees
+Reading attendees ...
+Exporting results to 249301603_attendees.csv
+Success!
 ```
 
 ## Assign attendance data
-
 
 ```sh
 python assign_attendance.py --help
@@ -48,10 +51,10 @@ Options:
 ```
 
 
-You need to download Presencas.xlsx from our DSPT drive. Example assigning attendance data from our previous event:
+You need to download 'Lista de Presenças.xlsx' from our DSPT drive. Example assigning attendance data from our previous event:
 
 ```sh
-python assign_attendances.py -d dspt_presencas.xlsx -m 249301603_attendees.csv
+python assign_attendances.py -d gdrive_dspt_presencas.xlsx -m 249301603_attendees.csv
 
 Loading DSPT spreadsheet data
 Loading Meetup.com attendees
@@ -60,7 +63,7 @@ Check sheet 'TempPresenças' at dspt_presencas.xlsx
 ```
 
 That's it. 
-Check the temp sheet created and validate who attended the meetup.
+Check the temp sheet created and validate who attended the meetup. Don't forget to remove it when you finish.
 
 ## Meta
 

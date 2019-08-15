@@ -5,6 +5,7 @@ from openpyxl import load_workbook
 import pandas as pd
 import numpy as np 
 import utils
+import re
 
 FIRST_MEETUP_COLUMN_ID = 7
 FIRST_MEMBER_ROW_ID = 8
@@ -57,7 +58,8 @@ class PresenceSpreadsheet(object):
                 contact_url_cell = self.sheet.cell( row = row_id, 
                                                     column = MEMBER_CONTACT_URL_COLUMN_ID)
                 
-                meetup_user_id = utils.parse_url_object_id( contact_url_cell.value )
+                # meetup_user_id = utils.parse_url_object_id( contact_url_cell.value )
+                meetup_user_id = re.search(r'members/(.*?)/profile', contact_url_cell.value).group(1)
                 
                 self.members.append({
                                     "uid": row_id, 

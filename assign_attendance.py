@@ -20,13 +20,13 @@ def process_presences(dspt_spreadsheet_filepath, meetup_attendees_filepath):
         click.echo(ctx.get_help())
         ctx.exit()
         
-    logging.info("Loading DSPT spreadsheet data")
+    click.echo("Loading DSPT spreadsheet data")
     xls = model.PresenceSpreadsheet(dspt_spreadsheet_filepath) 
     xls.load() 
     xls.read_members()
     
 
-    logging.info("Loading Meetup.com attendees")
+    click.echo("Loading Meetup.com attendees")
     attendees_df = pd.read_csv(meetup_attendees_filepath)
 
     members_df = pd.DataFrame(xls.members)
@@ -39,7 +39,7 @@ def process_presences(dspt_spreadsheet_filepath, meetup_attendees_filepath):
     members_df = members_df[columns]
     # members_df.to_csv("presencas.csv", index=False)
 
-    logging.info("Persisting attendance data into DSPT spreadsheet {}" .format( dspt_spreadsheet_filepath))
+    click.echo("Persisting attendance data into DSPT spreadsheet {}" .format( dspt_spreadsheet_filepath))
     tmpSheet = xls.wb.create_sheet(title="TempPresenças")
     for column_id, column_item  in enumerate(columns):
         tmpSheet.cell(column=column_id + 1, row=1, value=column_item)
@@ -50,7 +50,7 @@ def process_presences(dspt_spreadsheet_filepath, meetup_attendees_filepath):
 
     xls.wb.save(filename = dspt_spreadsheet_filepath)
 
-    logging.info("Check sheet 'TempPresenças' at {}".format(dspt_spreadsheet_filepath) )
+    click.echo("Check sheet 'TempPresenças' at {}".format(dspt_spreadsheet_filepath) )
 
 def isAttendee(x, attendees_df): 
     for u_id in attendees_df["meetup_user_id"].values: 

@@ -13,6 +13,7 @@ def parse_url_object_id(user_url):
     '''
     Parse meetup user id from url
     '''
+
     if(not user_url):
         return
 
