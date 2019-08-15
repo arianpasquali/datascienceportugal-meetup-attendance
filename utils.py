@@ -13,9 +13,12 @@ def parse_url_object_id(user_url):
     '''
     Parse meetup user id from url
     '''
-    if( not user_url):
+    if(not user_url):
         return
 
+    user_url = user_url.replace("profile","")
+    user_url = user_url.replace("//","/")
+    
     if(user_url[-1] == "/"):
         return user_url.split("/")[-2]
     else:

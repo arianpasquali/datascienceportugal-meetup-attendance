@@ -11,6 +11,7 @@ FIRST_MEMBER_ROW_ID = 8
 
 MEETUP_NAME_ROW_ID = 3
 
+MEMBER_ORDEM_COLUMN_ID = 1
 MEMBER_NAME_COLUMN_ID = 2
 MEMBER_CONTACT_URL_COLUMN_ID = 4
 
@@ -41,13 +42,14 @@ class PresenceSpreadsheet(object):
         
         # get first member name
         row_id = start_at
-        name_cell = self.sheet.cell(row= row_id, column = MEMBER_NAME_COLUMN_ID)
+        ordem_cell = self.sheet.cell(row= row_id, column = MEMBER_ORDEM_COLUMN_ID)
+        name_cell  = self.sheet.cell(row= row_id, column = MEMBER_NAME_COLUMN_ID)
 
         # iterate over all members
         while utils.isNotBlank(name_cell.value):
 
-            name_cell = self.sheet.cell(row = row_id, 
-                                        column = MEMBER_NAME_COLUMN_ID) 
+            ordem_cell = self.sheet.cell(row= row_id, column = MEMBER_ORDEM_COLUMN_ID)
+            name_cell  = self.sheet.cell(row = row_id, column = MEMBER_NAME_COLUMN_ID) 
             
             # check value
             if(name_cell.value):
@@ -56,11 +58,14 @@ class PresenceSpreadsheet(object):
                                                     column = MEMBER_CONTACT_URL_COLUMN_ID)
                 
                 meetup_user_id = utils.parse_url_object_id( contact_url_cell.value )
-
-                self.members.append({"uid": row_id, 
-                                "name": name_cell.value,
-                                "contact_url": contact_url_cell.value, 
-                                "meetup_user_id": meetup_user_id}) 
+                
+                self.members.append({
+                                    "uid": row_id, 
+                                    "ordem":ordem_cell.value,
+                                    "name": name_cell.value,
+                                    "contact_url": contact_url_cell.value, 
+                                    "meetup_user_id": meetup_user_id
+                                    }) 
             
             # next row id
             row_id += 1
@@ -86,12 +91,14 @@ class PresenceSpreadsheet(object):
             if(meetup_edition_cell.value):
                 self.meetups.append({"uid": col_id, 
                                      "meetup_edition": meetup_edition_cell.value}) 
-                # meetups.append(meetup_name_cell_value) 
-            
+                
             col_id += 1
 
         return self.meetups    
 
+    def persist_presences(self, presences):
+        pass
+    
     def read_presences(self):
             
         self.presences = np.zeros((len(self.members), len(self.meetups)), dtype=int)

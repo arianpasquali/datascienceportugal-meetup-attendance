@@ -35,12 +35,32 @@ Exemple loading attendees from event https://www.meetup.com/datascienceportugal/
 python load_attendees.py --event_url https://www.meetup.com/datascienceportugal/events/249301603
 ```
 
-## Testing
-To run tests you can use [pytest](https://pytest.org):
+## Assign attendance data
+
 
 ```sh
-pytest
+python assign_attendance.py --help
+Usage: assign_attendances.py [OPTIONS]
+
+Options:
+  -d, --dspt-spreadsheet-filepath PATH
+  -m, --meetup-attendees-filepath PATH
 ```
+
+
+You need to download Presencas.xlsx from our DSPT drive. Example assigning attendance data from our previous event:
+
+```sh
+python assign_attendances.py -d dspt_presencas.xlsx -m 249301603_attendees.csv
+
+Loading DSPT spreadsheet data
+Loading Meetup.com attendees
+Persisting attendance data into DSPT spreadsheet dspt_presencas.xlsx
+Check sheet 'TempPresenças' at dspt_presencas.xlsx
+```
+
+That's it. 
+Check the temp sheet created and validate who attended the meetup.
 
 ## Meta
 
