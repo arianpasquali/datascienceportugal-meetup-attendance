@@ -58,8 +58,7 @@ class PresenceSpreadsheet(object):
                 contact_url_cell = self.sheet.cell( row = row_id, 
                                                     column = MEMBER_CONTACT_URL_COLUMN_ID)
                 
-                # meetup_user_id = utils.parse_url_object_id( contact_url_cell.value )
-                meetup_user_id = re.search(r'members/(.*?)/profile', contact_url_cell.value).group(1)
+                meetup_user_id = utils.parse_url_object_id( contact_url_cell.value )
                 
                 self.members.append({
                                     "uid": row_id, 

@@ -37,6 +37,7 @@ def process_presences(dspt_spreadsheet_filepath, meetup_attendees_filepath):
     # select columns
     columns = ["ordem", "meetup_user_id", "name", "attended"]
     members_df = members_df[columns]
+    # debug
     # members_df.to_csv("presencas.csv", index=False)
 
     click.echo("Persisting attendance data into DSPT spreadsheet {}" .format( dspt_spreadsheet_filepath))
