@@ -58,8 +58,8 @@ python assign_attendances.py -d gdrive_dspt_presencas.xlsx -m 249301603_attendee
 
 Loading DSPT spreadsheet data
 Loading Meetup.com attendees
-Persisting attendance data into DSPT spreadsheet dspt_presencas.xlsx
-Check sheet 'TempPresenças' at dspt_presencas.xlsx
+Persisting attendance data into DSPT spreadsheet gdrive_dspt_presencas.xlsx
+Check sheet 'TempPresenças' at gdrive_dspt_presencas.xlsx
 ```
 
 That's it. 
