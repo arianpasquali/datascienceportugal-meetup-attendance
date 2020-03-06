@@ -15,6 +15,20 @@ We recommend installing your requirements using virtualenv or anaconda. In order
 pip install -r requirements.txt
 ```
 
+### Using Anaconda
+
+To create the environment with all the needed dependencies:
+
+```sh
+conda-env create -f requirements_conda.yaml
+```
+
+An then activate the environment when you want to use the tool:
+
+```sh
+conda activate meetup_attendance
+```
+
 ## Load event attendance
 
 In order to load event attendees:

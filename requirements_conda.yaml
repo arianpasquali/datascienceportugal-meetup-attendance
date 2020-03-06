@@ -1,0 +1,10 @@
+name: meetup_attendance
+channels:
+  - conda-forge
+dependencies:
+  - python=3.7
+  - geckodriver=0.26.0
+  - click=7.0
+  - openpyxl=2.6.2
+  - pandas=0.24.1
+  - selenium=3.141.0
