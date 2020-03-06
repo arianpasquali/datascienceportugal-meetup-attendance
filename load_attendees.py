@@ -65,7 +65,7 @@ def fetch_data(event_url):
                     "event_id":event_id,
                     "event_title":event_title.strip(),
                     "event_short_title":event_short_title.strip(),
-                    "member_profile_id":member_profile_id,
+                    "meetup_user_id":member_profile_id,
                     "member_name": member_name.strip(), 
                     "member_profile_url": member_url_profile.strip()
                 }
